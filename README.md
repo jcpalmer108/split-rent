@@ -1,3 +1,24 @@
+# SplitRent
+
+## About SplitRent
+
+SplitRent is an easy-to-use web form that gathers apartment details from the user, and generates an understandable rent calculation for what they can expect each of their roommates to pay.
+
+The algorithm works by gathering all bedroom and bathroom areas (squarefootage), and dividing that squarefootage by the total cost of rent. This cost-per-squarefoot number is then used to determine how much a certain room in the space will cost. If a roommate shares that sapce (ie shares a room), the cost of that space is divided between the number of people in the space.
+
+This means that at the end of the calculation, users who live alone in a room with an attached bathroom will pay more than individuals sharing a room or sharing a bathroom.
+
+
+## Inspiration Behind the Project
+
+The idea behind SplitRent came about one day when I was browsing Facebook marketplace and saw someone searching for a roommate. This individual listed the apartment complex and rent they were hoping to live in, and wrote out how much they expected their potential new roommates to pay.
+
+It came as a shock to me when I opened the apartment complex website and saw that the Original Poster was trying to make their potential new roommates pay for 85% of rent, when the Original poster was planning on living in the master bedroom with the attached bath.
+
+I believed this would be a perfect use case to practice developing my functional React component skills, in hopes of providing a quick and easy-to-use calculator for individuals looking for how to evenly split rent based on the bedroom sizes and square footage.
+
+## Tech Stack
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts

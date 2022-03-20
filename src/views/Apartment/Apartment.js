@@ -49,7 +49,7 @@ export function Apartment() {
         <RoomDetails options={options} />
         <RoommateDetails options={options} />
         <Button disabled={!showContinue} type="submit" variant="contained">
-          Contained
+          Continue
         </Button>
       </form>
     </div>
