@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import "./Apartment.scss";
 import RoomDetails from "./components/RoomDetails.js";
 import RoommateDetails from "./components/RoommateDetails.js";
+import SpaceDetails from "./components/SpaceDetails.js";
+import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
 
 export function Apartment() {
   const rent = useSelector((state) => state.rent);
@@ -11,6 +13,7 @@ export function Apartment() {
   const bedroom = useSelector((state) => state.bedroom);
   const bathroom = useSelector((state) => state.bathroom);
   const [showContinue, setShowContinue] = useState(false);
+  const [areaChoice, setAreaChoice] = useState('length-width')
 
   useEffect(() => {
     evaluateShowContinue();
@@ -24,6 +27,10 @@ export function Apartment() {
       setShowContinue(false)
     }
   }
+
+  const handleAreaChoice = (event) => {
+    setAreaChoice(event.target.value);
+  };
 
   const options = [
     { key: 0, value: "Zero" },
@@ -41,12 +48,14 @@ export function Apartment() {
   return (
     <div className="apartment">
       <form onSubmit={onSubmit}>
+        {/* <ProgressBar /> */}
         <h1>Tell me about your space</h1>
         <RoomDetails options={options} />
         <RoommateDetails options={options} />
-        <Button disabled={!showContinue} type="submit" variant="contained">
+        <SpaceDetails areaChoice={areaChoice} onChange={handleAreaChoice} />
+        {/* <Button disabled={!showContinue} type="submit" variant="contained">
           Continue
-        </Button>
+        </Button> */}
       </form>
     </div>
   );

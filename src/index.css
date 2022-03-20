@@ -8,12 +8,10 @@
   --pansy-purple: #861657;
 
   background-color: var(--nyanza);
-
-
 }
 
 h1 {
-  color: var(--pansy-purple)
+  color: var(--pansy-purple);
 }
 
 body {

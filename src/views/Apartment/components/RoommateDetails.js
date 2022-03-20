@@ -4,7 +4,7 @@ import { Select, MenuItem, TextField, InputAdornment } from "@mui/material";
 import { setRent } from "../../../store/rentSlice";
 import { setRoommate } from "../../../store/roommateSlice";
 
-export default function Apartment(props) {
+export default function RoommateDetails(props) {
   const dispatch = useDispatch();
   const rent = useSelector((state) => state.rent);
   const roommate = useSelector((state) => state.roommate);
