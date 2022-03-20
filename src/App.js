@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 // import logo from './logo.svg';
-import { Apartment } from './views/Apartment/Apartment.js';
-import './App.css';
+import { Apartment } from "./views/Apartment/Apartment.js";
+import "./App.css";
 
 function App() {
   return (
