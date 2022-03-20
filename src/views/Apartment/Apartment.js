@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@mui/material";
+import { Button, Collapse } from "@mui/material";
 import { useSelector } from "react-redux";
 import "./Apartment.scss";
 import RoomDetails from "./components/RoomDetails.js";
@@ -12,21 +12,29 @@ export function Apartment() {
   const roommate = useSelector((state) => state.roommate);
   const bedroom = useSelector((state) => state.bedroom);
   const bathroom = useSelector((state) => state.bathroom);
-  const [showContinue, setShowContinue] = useState(false);
-  const [areaChoice, setAreaChoice] = useState('length-width')
+  // const [showContinue, setShowContinue] = useState(false);
+  const [showRoommateDetails, setShowRoommateDetails] = useState(false);
+  const [areaChoice, setAreaChoice] = useState('length-width');
 
+  // useEffect(() => {
+  //   evaluateShowContinue();
+  // }, [rent, roommate, bedroom, bathroom])
+
+  // function evaluateShowContinue () {
+  //   if(rent > 0 && roommate > 0 && bedroom > 0 && bathroom > 0) {
+  //     setShowContinue(true)
+  //   } else {
+  //     setShowContinue(false)
+  //   }
+  // }
+
+  console.log("")
   useEffect(() => {
-    evaluateShowContinue();
-  }, [rent, roommate, bedroom, bathroom])
-
-  function evaluateShowContinue () {
-    console.log(rent, roommate, bedroom, bathroom)
-    if(rent > 0 && roommate > 0 && bedroom > 0 && bathroom > 0) {
-      setShowContinue(true)
-    } else {
-      setShowContinue(false)
+    if(bedroom > 0 && bathroom > 0) {
+      setShowRoommateDetails(true);
     }
-  }
+
+  }, [bedroom, bathroom])
 
   const handleAreaChoice = (event) => {
     setAreaChoice(event.target.value);
@@ -51,8 +59,10 @@ export function Apartment() {
         {/* <ProgressBar /> */}
         <h1>Tell me about your space</h1>
         <RoomDetails options={options} />
-        <RoommateDetails options={options} />
-        <SpaceDetails areaChoice={areaChoice} onChange={handleAreaChoice} />
+        <Collapse in={showRoommateDetails}>
+          <RoommateDetails options={options} />
+        </Collapse>
+        {/* <SpaceDetails areaChoice={areaChoice} onChange={handleAreaChoice} /> */}
         {/* <Button disabled={!showContinue} type="submit" variant="contained">
           Continue
         </Button> */}
