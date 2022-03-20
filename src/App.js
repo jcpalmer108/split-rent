@@ -1,15 +1,26 @@
 import React from "react";
 // import logo from './logo.svg';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Apartment } from "./views/Apartment/Apartment.js";
 import "./App.css";
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#AA4465",
+    },
+  },
+});
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Apartment />
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          <Apartment />
+        </header>
+      </div>
+    </ThemeProvider>
   );
 }
 
