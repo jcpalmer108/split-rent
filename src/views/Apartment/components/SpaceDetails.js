@@ -4,6 +4,7 @@ import { Select, MenuItem } from "@mui/material";
 export default function SpaceDetails(props) {
   return (
     <div>
+      I currently know the{' '}
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
@@ -17,6 +18,7 @@ export default function SpaceDetails(props) {
         <MenuItem value="length-width">Length & Width</MenuItem>
         <MenuItem value="squarefoot">Squarefootage</MenuItem>
       </Select>
+      {' '}of my new space.
     </div>
   )
 }
