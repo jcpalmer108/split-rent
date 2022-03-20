@@ -24,6 +24,7 @@ export default function Apartment(props) {
         id="standard-basic"
         value={rent}
         onChange={handleRentChange}
+        type="number"
         variant="standard"
         InputProps={{
           startAdornment: <InputAdornment position="start">$</InputAdornment>,
