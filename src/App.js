@@ -1,12 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+// import logo from './logo.svg';
+import { Apartment } from './views/Apartment/Apartment.js';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Apartment />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+/*
+
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,9 +60,4 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+*/
