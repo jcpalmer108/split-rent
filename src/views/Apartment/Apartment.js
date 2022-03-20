@@ -41,11 +41,7 @@ export function Apartment() {
   return (
     <div className="apartment">
       <form onSubmit={onSubmit}>
-        <h1>Splitting rent has never been so easy.</h1>
-        <p>
-          Let's figure out how to split your rent between each of your
-          roommates.
-        </p>
+        <h1>Tell me about your space</h1>
         <RoomDetails options={options} />
         <RoommateDetails options={options} />
         <Button disabled={!showContinue} type="submit" variant="contained">
