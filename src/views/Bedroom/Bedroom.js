@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { TextField } from "@mui/material";
+import { TextField, InputAdornment } from "@mui/material";
 import { updateDetail } from "../../store/bedroomSlice";
+import AreaChoiceField from "./components/AreaChoiceField.js";
 
 
 export default function Bedroom(props) {
@@ -11,11 +12,8 @@ export default function Bedroom(props) {
   console.log(bedroom)
 
   const handleLabelChange = (event, key, attribute) => {
-    console.log('event: ', event);
-    console.log('key:', key);
     dispatch(updateDetail({ payload: event.target.value, key: key, attribute: attribute }));
   };
-
 
   return (
     <div>
@@ -24,10 +22,12 @@ export default function Bedroom(props) {
         bedroom.map((item, index) => {
           return (<div key={index}>
             <TextField variant="standard" value={item.label} onChange={(e) => handleLabelChange(e, item.key, "label")} />
+            {' '}is{' '}
+            <AreaChoiceField />
           </div>)
         })
       }
-      {/* <div>Bedroom A is X length and X width. It DOES/DOES NOT have an attached bathroom. It'll be shared by X people.</div> */}
+      {/* <div>Bedroom A is X length and X width. It DOES/DOES NOT have an attached bathroom.  */}
     </div>
     )
 }

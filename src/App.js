@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Apartment from "./views/Apartment/Apartment.js";
 import Bedroom from "./views/Bedroom/Bedroom.js";
@@ -15,13 +15,19 @@ const theme = createTheme({
 
 function App() {
   const view = useSelector((state) => state.view);
+  const [areaChoice, setAreaChoice] = useState('length-width');
+
+  const handleAreaChoice = (event) => {
+    setAreaChoice(event.target.value);
+  };
+
 
   function showView() {
     switch(view.current) {
       case view.options[0]:
-        return <Apartment />;
+        return <Apartment areaChoice={areaChoice} handleAreaChoice={handleAreaChoice} />;
       case view.options[1]:
-        return <Bedroom />;
+        return <Bedroom areaChoice={areaChoice} />;
       default:
         console.log('default');
     }

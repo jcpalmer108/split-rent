@@ -9,7 +9,7 @@ import { setCurrentView } from "../../store/viewSlice.js";
 import { generateDefaultBedroomDetails } from "../../store/bedroomSlice";
 
 
-export default function Apartment() {
+export default function Apartment(props) {
   const rent = useSelector((state) => state.rent);
   const roommate = useSelector((state) => state.roommate);
   const bedroom = useSelector((state) => state.bedroom.count);
@@ -18,7 +18,6 @@ export default function Apartment() {
   const [disableContinue, setDisableContinue] = useState(true);
   const [showRoommateDetails, setShowRoommateDetails] = useState(false);
   const [showSpaceDetails, setShowSpaceDetails] = useState(false);
-  const [areaChoice, setAreaChoice] = useState('length-width');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,10 +39,6 @@ export default function Apartment() {
   useEffect(() => {
     if(rent > 0 && roommate > 0) setShowSpaceDetails(true);
   }, [rent, roommate])
-
-  const handleAreaChoice = (event) => {
-    setAreaChoice(event.target.value);
-  };
 
   const options = [
     { key: 0, value: "Zero" },
@@ -73,7 +68,7 @@ export default function Apartment() {
       </div>
       <div>
         <Collapse in={showSpaceDetails}>
-          <SpaceDetails className="line" areaChoice={areaChoice} onChange={handleAreaChoice} />
+          <SpaceDetails className="line" areaChoice={props.areaChoice} onChange={props.handleAreaChoice} />
           <Button className="line" disabled={disableContinue} onClick={onSubmit} variant="contained">
             Continue
           </Button>
