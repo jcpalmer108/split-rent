@@ -6,7 +6,7 @@ import { setBathroom } from "../../../store/bathroomSlice";
 
 export default function Apartment(props) {
   const dispatch = useDispatch();
-  const bedroom = useSelector((state) => state.bedroom);
+  const bedroom = useSelector((state) => state.bedroom.count);
   const bathroom = useSelector((state) => state.bathroom);
 
   const handleBedroomChange = (event) => {

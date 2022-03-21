@@ -6,12 +6,13 @@ import RoomDetails from "./components/RoomDetails.js";
 import RoommateDetails from "./components/RoommateDetails.js";
 import SpaceDetails from "./components/SpaceDetails.js";
 import { setCurrentView } from "../../store/viewSlice.js";
-// import ProgressBar from "../../components/ProgressBar/ProgressBar.js";
+import { generateDefaultBedroomDetails } from "../../store/bedroomSlice";
+
 
 export default function Apartment() {
   const rent = useSelector((state) => state.rent);
   const roommate = useSelector((state) => state.roommate);
-  const bedroom = useSelector((state) => state.bedroom);
+  const bedroom = useSelector((state) => state.bedroom.count);
   const bathroom = useSelector((state) => state.bathroom);
   const view = useSelector((state) => state.view);
   const [disableContinue, setDisableContinue] = useState(true);
@@ -54,8 +55,9 @@ export default function Apartment() {
   ];
 
   const onSubmit = () => {
-    console.log('hit')
     dispatch(setCurrentView(view.options[1]))
+    dispatch(generateDefaultBedroomDetails())
+    console.log(bedroom)
   };
 
   return (

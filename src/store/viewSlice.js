@@ -8,7 +8,6 @@ export const slice = createSlice({
   },
   reducers: {
     setCurrentView: (state, action) => {
-      console.log('blah:', state, action.payload)
       state.current = action.payload;
     },
   },

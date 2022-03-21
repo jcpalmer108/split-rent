@@ -17,7 +17,6 @@ function App() {
   const view = useSelector((state) => state.view);
 
   function showView() {
-    console.log(view);
     switch(view.current) {
       case view.options[0]:
         return <Apartment />;
