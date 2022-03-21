@@ -1,7 +1,8 @@
 import React from "react";
-// import logo from './logo.svg';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Apartment } from "./views/Apartment/Apartment.js";
+import Apartment from "./views/Apartment/Apartment.js";
+import Bedroom from "./views/Bedroom/Bedroom.js";
+import { useSelector } from "react-redux";
 import "./App.css";
 
 const theme = createTheme({
@@ -13,11 +14,25 @@ const theme = createTheme({
 });
 
 function App() {
+  const view = useSelector((state) => state.view);
+
+  function showView() {
+    console.log(view);
+    switch(view.current) {
+      case view.options[0]:
+        return <Apartment />;
+      case view.options[1]:
+        return <Bedroom />;
+      default:
+        console.log('default');
+    }
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <header className="App-header">
-          <Apartment />
+          { showView() }
         </header>
       </div>
     </ThemeProvider>
