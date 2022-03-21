@@ -31,6 +31,7 @@ export const slice = createSlice({
           return item;
         }
       })
+      console.log('updateDetail', state.details)
     }
   },
 });
