@@ -19,7 +19,7 @@ export default function AreaChoiceField(props) {
     return (
       <>
         <TextField
-          className="text-field"
+          className="length-width-field"
           value={areaVals[props.index].l}
           type='number'
           onChange={(event) => {
@@ -36,7 +36,7 @@ export default function AreaChoiceField(props) {
         />{' '}
         long and{' '}
         <TextField
-          className="text-field"
+          className="length-width-field"
           value={areaVals[props.index].w}
           type='number'
           onChange={(event) => {
@@ -77,23 +77,3 @@ export default function AreaChoiceField(props) {
     )
   }
 }
-
-/*
-
-  { props.areaChoice === 'length-width' ? (
-    
-    <>
-      <TextField
-        value={length}
-        type="number"
-        variant="standard"
-        InputProps={{
-          endAdornment: <InputAdornment position="end">ft</InputAdornment>,
-        }}
-      />
-    </>
-  ) : (
-    <>square footages</>
-  )}
-
-*/
