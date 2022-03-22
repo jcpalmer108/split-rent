@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateDetail } from '../../store/bedroomSlice'
 import AreaChoiceField from './components/AreaChoiceField.js'
@@ -8,6 +8,7 @@ export default function Bedroom(props) {
   const bedroom = useSelector((state) => state.bedroom.details)
   const dispatch = useDispatch()
   const [index, setIndex] = useState(0)
+  const [isBackDisabled, setIsBackDisabled] = useState(true)
 
   const incrementIndex = () => {
     setIndex(index + 1)
@@ -17,8 +18,20 @@ export default function Bedroom(props) {
     setIndex(index - 1)
   }
 
+  useEffect(() => {
+    evaluateIsBackDisabled()
+  })
+
   const handleChange = (value, key, attribute) => {
     dispatch(updateDetail({ value: value, key: key, attribute: attribute }))
+  }
+
+  const evaluateIsBackDisabled = () => {
+    if(index <= 0) {
+      setIsBackDisabled(true)
+    } else {
+      setIsBackDisabled(false)
+    }
   }
 
   return (
@@ -46,8 +59,9 @@ export default function Bedroom(props) {
       </div>
       <div>
         <Button
+          disabled={isBackDisabled}
           onClick={() => {
-            index > 0 ? decrementIndex() : console.log('disable back')
+            if(index > 0) decrementIndex()
           }}
         >
           Back
@@ -55,9 +69,7 @@ export default function Bedroom(props) {
 
         <Button
           onClick={() => {
-            index < bedroom.length - 1
-              ? incrementIndex()
-              : console.log('continue')
+            if(index < bedroom.length - 1) incrementIndex();
           }}
         >
           Continue
