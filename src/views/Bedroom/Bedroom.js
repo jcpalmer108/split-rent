@@ -25,8 +25,23 @@ export default function Bedroom(props) {
     <div>
       <h2>Let's talk about the rooms...</h2>
       <h3>
-        {index + 1}/{bedroom.length}
+        {index + 1} out of {bedroom.length}
       </h3>
+      <div>
+        { bedroom[index].label } is{' '}
+        <AreaChoiceField item={bedroom[index]} areaChoice={props.areaChoice} handleChange={handleChange} index={index} />
+        {' '}It also{' '}
+        <Select
+          value={bedroom[index].attachedBath}
+          variant="standard"
+          onChange={(event) => handleChange(event.target.value, bedroom[index].key, "attachedBath")}
+        >
+          <MenuItem value={true}>does</MenuItem>
+          <MenuItem value={false}>does not</MenuItem>
+        </Select>
+        {' '}have an attached bathroom.
+
+      </div>
       <div>
         <Button
           onClick={() => {
@@ -35,6 +50,7 @@ export default function Bedroom(props) {
         >
           Back
         </Button>
+
         <Button
           onClick={() => {
             index < bedroom.length - 1
