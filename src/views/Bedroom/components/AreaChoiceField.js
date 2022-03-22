@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, InputAdornment } from "@mui/material";
+import { useSelector } from "react-redux";
 
 export default function AreaChoiceField(props) {
+  const bedroomDetails = useSelector((state) => state.bedroom.details);
   const [length, setLength] = useState(0);
   const [width, setWidth] = useState(0);
 
-  const calculateSquarefootage = (l, w) => {
-    return l * w;
-  };
+  useEffect(() => {
+    props.handleChange(length * width, props.item.key, "squarefootage")
+  }, [length, width])
 
   if(props.areaChoice === 'length-width') {
 
@@ -18,7 +20,6 @@ export default function AreaChoiceField(props) {
           type="number"
           onChange={(event) => {
             setLength(event.target.value);
-            props.handleChange(calculateSquarefootage(length, width), props.item.key, "squarefootage")
           }}
           variant="standard"
           InputProps={{
@@ -31,14 +32,13 @@ export default function AreaChoiceField(props) {
           type="number"
           onChange={(event) => {
             setWidth(event.target.value);
-            props.handleChange(calculateSquarefootage(length, width), props.item.key, "squarefootage")
           }}
           variant="standard"
           InputProps={{
             endAdornment: <InputAdornment position="end">ft</InputAdornment>,
           }}
         />
-        {' '}wide, or { calculateSquarefootage(length, width) } square feet.
+        {' '}wide, or { bedroomDetails[props.index].squarefootage } square feet.
 
       </>
     )

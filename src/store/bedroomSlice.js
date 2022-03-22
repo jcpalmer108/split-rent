@@ -21,8 +21,8 @@ export const slice = createSlice({
       }
     },
     updateDetail: (state, action) => {
-      state.details = state.details.map(item => {
-        if(item.key === action.payload.key) {
+      state.details = state.details.map((item, index) => {
+        if(item.key === action.payload.key && state.details[index][action.payload.attribute] !== action.payload.value) {
           return {
             ...item,
             [action.payload.attribute]: action.payload.value
@@ -31,7 +31,6 @@ export const slice = createSlice({
           return item;
         }
       })
-      console.log('updateDetail', state.details)
     }
   },
 });

@@ -21,7 +21,7 @@ export default function Bedroom(props) {
           return (<div key={index}>
             {/* <TextField variant="standard" value={item.label} onChange={(e) => handleLabelChange(e, item.key, "label")} /> */}
             { item.label } is{' '}
-            <AreaChoiceField item={item} areaChoice={props.areaChoice} handleChange={handleChange}/>
+            <AreaChoiceField item={item} areaChoice={props.areaChoice} handleChange={handleChange} index={index} />
           </div>)
         })
       }
