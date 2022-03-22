@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateDetail } from "../../store/bedroomSlice";
 import AreaChoiceField from "./components/AreaChoiceField.js";
-import { Select, MenuItem } from "@mui/material";
+import { Select, MenuItem, Button } from "@mui/material";
 
 export default function Bedroom(props) {
   const bedroom = useSelector((state) => state.bedroom.details);
   const dispatch = useDispatch();
+  const [index, setIndex] = useState(0)
 
+  const incrementIndex = () => {
+    setIndex(index + 1);
+  }
+
+  const decrementIndex = () => {
+    setIndex(index - 1);
+  }
 
   const handleChange = (value, key, attribute) => {
     dispatch(updateDetail({ value: value, key: key, attribute: attribute }));
@@ -16,10 +24,25 @@ export default function Bedroom(props) {
   return (
     <div>
       <h2>Let's talk about the rooms...</h2>
+      <h3>{ index + 1}/{bedroom.length}</h3>
+      <div>
+        <Button onClick={() => {
+          index > 0 ? decrementIndex() : console.log('disable back')
+          }}>Back</Button>
+        <Button onClick={() => {
+          index < bedroom.length - 1 ? incrementIndex() : console.log('continue')
+          }}>Continue</Button>
+      </div>
+    </div>
+    )
+}
+
+/*
+
       {
         bedroom.map((item, index) => {
           return (<div key={index}>
-            {/* <TextField variant="standard" value={item.label} onChange={(e) => handleLabelChange(e, item.key, "label")} /> */}
+            <TextField variant="standard" value={item.label} onChange={(e) => handleLabelChange(e, item.key, "label")} />}
             { item.label } is{' '}
             <AreaChoiceField item={item} areaChoice={props.areaChoice} handleChange={handleChange} index={index} />
             {' '}It also{' '}
@@ -35,7 +58,5 @@ export default function Bedroom(props) {
           </div>)
         })
       }
-      {/* <div>Bedroom A is X length and X width. It DOES/DOES NOT have an attached bathroom.  */}
-    </div>
-    )
-}
+
+*/
