@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { updateDetail } from "../../store/bedroomSlice";
 import AreaChoiceField from "./components/AreaChoiceField.js";
-
+import { Select, MenuItem } from "@mui/material";
 
 export default function Bedroom(props) {
   const bedroom = useSelector((state) => state.bedroom.details);
@@ -22,6 +22,16 @@ export default function Bedroom(props) {
             {/* <TextField variant="standard" value={item.label} onChange={(e) => handleLabelChange(e, item.key, "label")} /> */}
             { item.label } is{' '}
             <AreaChoiceField item={item} areaChoice={props.areaChoice} handleChange={handleChange} index={index} />
+            {' '}It also{' '}
+            <Select
+              value={item.attachedBath}
+              variant="standard"
+              onChange={(event) => handleChange(event.target.value, item.key, "attachedBath")}
+            >
+              <MenuItem value={true}>does</MenuItem>
+              <MenuItem value={false}>does not</MenuItem>
+            </Select>
+            {' '}have an attached bathroom.
           </div>)
         })
       }

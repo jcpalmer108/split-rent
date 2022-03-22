@@ -12,7 +12,6 @@ export default function AreaChoiceField(props) {
   }, [length, width])
 
   if(props.areaChoice === 'length-width') {
-
     return (
       <>
         <TextField
@@ -44,7 +43,19 @@ export default function AreaChoiceField(props) {
     )
   } else {
     return (
-      <>squarefootage</>
+      <>
+        <TextField
+          value={props.item.squarefootage}
+          type="number"
+          onChange={(event) => {
+            props.handleChange(event.target.value, props.item.key, "squarefootage")          }}
+          variant="standard"
+          InputProps={{
+            endAdornment: <InputAdornment position="end">sqft</InputAdornment>,
+          }}
+        />
+        {' '}room.
+      </>
     )
   }
 }
