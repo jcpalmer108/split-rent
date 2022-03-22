@@ -1,6 +1,8 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Select, MenuItem, TextField, InputAdornment } from '@mui/material'
+
+// redux calls
+import { useSelector, useDispatch } from 'react-redux'
 import { setRent } from '../../../store/rentSlice'
 import { setRoommate } from '../../../store/roommateSlice'
 
@@ -9,11 +11,11 @@ export default function RoommateDetails(props) {
   const rent = useSelector((state) => state.rent)
   const roommate = useSelector((state) => state.roommate)
 
-  const handleRentChange = (event) => {
+  function handleRentChange(event) {
     dispatch(setRent(event.target.value))
   }
 
-  const handleRoommateChange = (event) => {
+  function handleRoommateChange(event) {
     dispatch(setRoommate(event.target.value))
   }
 
@@ -21,7 +23,7 @@ export default function RoommateDetails(props) {
     <div>
       Rent will cost{' '}
       <TextField
-        id='standard-basic'
+        id='rent'
         value={rent}
         onChange={handleRentChange}
         type='number'
@@ -33,7 +35,7 @@ export default function RoommateDetails(props) {
       monthly, and I'll be sharing it between{' '}
       <Select
         labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        id='roommates'
         value={roommate}
         variant='standard'
         onChange={handleRoommateChange}

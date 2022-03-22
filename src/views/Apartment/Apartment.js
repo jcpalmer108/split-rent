@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Collapse } from '@mui/material'
-import { useSelector, useDispatch } from 'react-redux'
 import './Apartment.scss'
+
+// component calls
 import RoomDetails from './components/RoomDetails.js'
 import RoommateDetails from './components/RoommateDetails.js'
 import SpaceDetails from './components/SpaceDetails.js'
+
+// redux calls
+import { useSelector, useDispatch } from 'react-redux'
 import { setCurrentView } from '../../store/viewSlice.js'
 import { generateDefaultBedroomDetails } from '../../store/bedroomSlice'
 
+
 export default function Apartment(props) {
+  const dispatch = useDispatch()
   const rent = useSelector((state) => state.rent)
   const roommate = useSelector((state) => state.roommate)
   const bedroom = useSelector((state) => state.bedroom.count)
@@ -17,28 +23,6 @@ export default function Apartment(props) {
   const [disableContinue, setDisableContinue] = useState(true)
   const [showRoommateDetails, setShowRoommateDetails] = useState(false)
   const [showSpaceDetails, setShowSpaceDetails] = useState(false)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    evaluateShowContinue()
-  }, [rent, roommate, bedroom, bathroom])
-
-  function evaluateShowContinue() {
-    if (rent > 0 && roommate > 0 && bedroom > 0 && bathroom > 0) {
-      setDisableContinue(false)
-    } else {
-      setDisableContinue(true)
-    }
-  }
-
-  useEffect(() => {
-    if (bedroom > 0 && bathroom > 0) setShowRoommateDetails(true)
-  }, [bedroom, bathroom])
-
-  useEffect(() => {
-    if (rent > 0 && roommate > 0) setShowSpaceDetails(true)
-  }, [rent, roommate])
-
   const options = [
     { key: 0, value: 'Zero' },
     { key: 1, value: 'One' },
@@ -48,10 +32,29 @@ export default function Apartment(props) {
     { key: 5, value: 'Five' },
   ]
 
-  const onSubmit = () => {
+  useEffect(() => {
+    evaluateShowContinue()
+  }, [rent, roommate, bedroom, bathroom])
+
+  useEffect(() => {
+    if (bedroom > 0 && bathroom > 0) setShowRoommateDetails(true)
+  }, [bedroom, bathroom])
+
+  useEffect(() => {
+    if (rent > 0 && roommate > 0) setShowSpaceDetails(true)
+  }, [rent, roommate])
+
+  function evaluateShowContinue() {
+    if (rent > 0 && roommate > 0 && bedroom > 0 && bathroom > 0) {
+      setDisableContinue(false)
+    } else {
+      setDisableContinue(true)
+    }
+  }
+
+  function onSubmit() {
     dispatch(setCurrentView(view.options[1]))
     dispatch(generateDefaultBedroomDetails())
-    console.log(bedroom)
   }
 
   return (

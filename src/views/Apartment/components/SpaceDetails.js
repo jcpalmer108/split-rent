@@ -6,12 +6,10 @@ export default function SpaceDetails(props) {
     <div>
       I currently know the{' '}
       <Select
-        labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        id='area-choice'
         value={props.areaChoice}
         variant='standard'
         onChange={(event) => {
-          console.log('test', event.target.value)
           props.onChange(event)
         }}
       >

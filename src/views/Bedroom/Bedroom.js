@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateDetail } from '../../store/bedroomSlice'
-import AreaChoiceField from './components/AreaChoiceField.js'
 import { Select, MenuItem, Button, TextField } from '@mui/material'
 
+// component calls
+import AreaChoiceField from './components/AreaChoiceField.js'
+
+// redux calls
+import { useSelector, useDispatch } from 'react-redux'
+import { updateDetail } from '../../store/bedroomSlice'
+
 export default function Bedroom(props) {
-  const bedroom = useSelector((state) => state.bedroom.details)
   const dispatch = useDispatch()
+  const bedroom = useSelector((state) => state.bedroom.details)
   const [index, setIndex] = useState(0)
   const [isBackDisabled, setIsBackDisabled] = useState(true)
-
-  const incrementIndex = () => {
-    setIndex(index + 1)
-  }
-
-  const decrementIndex = () => {
-    setIndex(index - 1)
-  }
 
   useEffect(() => {
     evaluateIsBackDisabled()
   })
 
-  const handleChange = (value, key, attribute) => {
+  function handleChange (value, key, attribute) {
     dispatch(updateDetail({ value: value, key: key, attribute: attribute }))
   }
 
-  const evaluateIsBackDisabled = () => {
+  function evaluateIsBackDisabled() {
     if (index <= 0) {
       setIsBackDisabled(true)
     } else {
       setIsBackDisabled(false)
     }
+  }
+
+  function incrementIndex() {
+    setIndex(index + 1)
+  }
+
+  function decrementIndex() {
+    setIndex(index - 1)
   }
 
   return (
@@ -43,6 +47,7 @@ export default function Bedroom(props) {
       <div>
         The{' '}
         <TextField
+          id="label"
           variant='standard'
           value={bedroom[index].label}
           onChange={(event) =>
@@ -58,6 +63,7 @@ export default function Bedroom(props) {
         />{' '}
         It also{' '}
         <Select
+          id="attached"
           value={bedroom[index].attachedBath}
           variant='standard'
           onChange={(event) =>

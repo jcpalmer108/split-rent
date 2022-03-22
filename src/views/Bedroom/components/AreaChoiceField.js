@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { TextField, InputAdornment } from '@mui/material'
+
+// redux calls
 import { useSelector } from 'react-redux'
-import './AreaChoiceField.scss'
 
 export default function AreaChoiceField(props) {
   const bedroomDetails = useSelector((state) => state.bedroom.details)
-  const [length, setLength] = useState(0)
-  const [width, setWidth] = useState(0)
   const [areaVals, setAreaVals] = useState(
     bedroomDetails.map((item) => ({ l: 0, w: 0 }))
   )
-
-  console.log(areaVals)
 
   useEffect(() => {
     props.handleChange(
@@ -25,7 +22,7 @@ export default function AreaChoiceField(props) {
     return (
       <>
         <TextField
-          className='length-width-field'
+          className='number-field'
           value={areaVals[props.index].l}
           type='number'
           onChange={(event) => {
@@ -42,7 +39,7 @@ export default function AreaChoiceField(props) {
         />{' '}
         long and{' '}
         <TextField
-          className='length-width-field'
+          className='number-field'
           value={areaVals[props.index].w}
           type='number'
           onChange={(event) => {
@@ -65,6 +62,7 @@ export default function AreaChoiceField(props) {
       <>
         <TextField
           value={props.item.squarefootage}
+          className='number-field'
           type='number'
           onChange={(event) => {
             props.handleChange(

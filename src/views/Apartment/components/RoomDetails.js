@@ -1,6 +1,8 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Select, MenuItem } from '@mui/material'
+
+// redux calls
+import { useSelector, useDispatch } from 'react-redux'
 import { setBedroom } from '../../../store/bedroomSlice'
 import { setBathroom } from '../../../store/bathroomSlice'
 
@@ -9,11 +11,11 @@ export default function Apartment(props) {
   const bedroom = useSelector((state) => state.bedroom.count)
   const bathroom = useSelector((state) => state.bathroom)
 
-  const handleBedroomChange = (event) => {
+  function handleBedroomChange(event) {
     dispatch(setBedroom(event.target.value))
   }
 
-  const handleBathroomChange = (event) => {
+  function handleBathroomChange(event) {
     dispatch(setBathroom(event.target.value))
   }
 
@@ -21,8 +23,7 @@ export default function Apartment(props) {
     <div>
       I am renting a place with{' '}
       <Select
-        labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        id='bedrooms'
         value={bedroom}
         variant='standard'
         onChange={handleBedroomChange}
@@ -37,8 +38,7 @@ export default function Apartment(props) {
       </Select>{' '}
       bedrooms, and{' '}
       <Select
-        labelId='demo-simple-select-label'
-        id='demo-simple-select'
+        id='bathrooms'
         value={bathroom}
         variant='standard'
         onChange={handleBathroomChange}
