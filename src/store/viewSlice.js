@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 export const slice = createSlice({
-  name: "roommate",
+  name: 'roommate',
   initialState: {
-    current: "apartment",
-    options: ["apartment", "bedroom"]
+    current: 'apartment',
+    options: ['apartment', 'bedroom'],
   },
   reducers: {
     setCurrentView: (state, action) => {
-      state.current = action.payload;
+      state.current = action.payload
     },
   },
-});
+})
 
-export const { setCurrentView } = slice.actions;
+export const { setCurrentView } = slice.actions
 
-export default slice.reducer;
+export default slice.reducer

@@ -1,44 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { TextField, InputAdornment } from "@mui/material";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { TextField, InputAdornment } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 export default function AreaChoiceField(props) {
-  const bedroomDetails = useSelector((state) => state.bedroom.details);
-  const [length, setLength] = useState(0);
-  const [width, setWidth] = useState(0);
+  const bedroomDetails = useSelector((state) => state.bedroom.details)
+  const [length, setLength] = useState(0)
+  const [width, setWidth] = useState(0)
 
   useEffect(() => {
-    props.handleChange(length * width, props.item.key, "squarefootage")
+    props.handleChange(length * width, props.item.key, 'squarefootage')
   }, [length, width])
 
-  if(props.areaChoice === 'length-width') {
+  if (props.areaChoice === 'length-width') {
     return (
       <>
         <TextField
           value={length}
-          type="number"
+          type='number'
           onChange={(event) => {
-            setLength(event.target.value);
+            setLength(event.target.value)
           }}
-          variant="standard"
+          variant='standard'
           InputProps={{
-            endAdornment: <InputAdornment position="end">ft</InputAdornment>,
+            endAdornment: <InputAdornment position='end'>ft</InputAdornment>,
           }}
-        />
-        {' '}long and{' '}
+        />{' '}
+        long and{' '}
         <TextField
           value={width}
-          type="number"
+          type='number'
           onChange={(event) => {
-            setWidth(event.target.value);
+            setWidth(event.target.value)
           }}
-          variant="standard"
+          variant='standard'
           InputProps={{
-            endAdornment: <InputAdornment position="end">ft</InputAdornment>,
+            endAdornment: <InputAdornment position='end'>ft</InputAdornment>,
           }}
-        />
-        {' '}wide, or { bedroomDetails[props.index].squarefootage } square feet.
-
+        />{' '}
+        wide, or {bedroomDetails[props.index].squarefootage} square feet.
       </>
     )
   } else {
@@ -46,15 +45,20 @@ export default function AreaChoiceField(props) {
       <>
         <TextField
           value={props.item.squarefootage}
-          type="number"
+          type='number'
           onChange={(event) => {
-            props.handleChange(event.target.value, props.item.key, "squarefootage")          }}
-          variant="standard"
-          InputProps={{
-            endAdornment: <InputAdornment position="end">sqft</InputAdornment>,
+            props.handleChange(
+              event.target.value,
+              props.item.key,
+              'squarefootage'
+            )
           }}
-        />
-        {' '}room.
+          variant='standard'
+          InputProps={{
+            endAdornment: <InputAdornment position='end'>sqft</InputAdornment>,
+          }}
+        />{' '}
+        room.
       </>
     )
   }

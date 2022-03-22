@@ -8,7 +8,6 @@ The algorithm works by gathering all bedroom and bathroom areas (squarefootage),
 
 This means that at the end of the calculation, users who live alone in a room with an attached bathroom will pay more than individuals sharing a room or sharing a bathroom.
 
-
 ## Inspiration Behind the Project
 
 The idea behind SplitRent came about one day when I was browsing Facebook marketplace and saw someone searching for a roommate. This individual listed the apartment complex and rent they were hoping to live in, and wrote out how much they expected their potential new roommates to pay.

@@ -1,50 +1,52 @@
-import React, { useState } from "react";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Apartment from "./views/Apartment/Apartment.js";
-import Bedroom from "./views/Bedroom/Bedroom.js";
-import { useSelector } from "react-redux";
-import "./App.css";
+import React, { useState } from 'react'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import Apartment from './views/Apartment/Apartment.js'
+import Bedroom from './views/Bedroom/Bedroom.js'
+import { useSelector } from 'react-redux'
+import './App.css'
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#AA4465",
+      main: '#AA4465',
     },
   },
-});
+})
 
 function App() {
-  const view = useSelector((state) => state.view);
-  const [areaChoice, setAreaChoice] = useState('length-width');
+  const view = useSelector((state) => state.view)
+  const [areaChoice, setAreaChoice] = useState('length-width')
 
   const handleAreaChoice = (event) => {
-    setAreaChoice(event.target.value);
-  };
-
+    setAreaChoice(event.target.value)
+  }
 
   function showView() {
-    switch(view.current) {
+    switch (view.current) {
       case view.options[0]:
-        return <Apartment areaChoice={areaChoice} handleAreaChoice={handleAreaChoice} />;
+        return (
+          <Apartment
+            areaChoice={areaChoice}
+            handleAreaChoice={handleAreaChoice}
+          />
+        )
       case view.options[1]:
-        return <Bedroom areaChoice={areaChoice} />;
+        return <Bedroom areaChoice={areaChoice} />
       default:
-        console.log('default');
+        console.log('default')
     }
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <header className="App-header">
-          { showView() }
-        </header>
+      <div className='App'>
+        <header className='App-header'>{showView()}</header>
       </div>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
 
 /*
 

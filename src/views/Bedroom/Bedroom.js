@@ -1,40 +1,52 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { updateDetail } from "../../store/bedroomSlice";
-import AreaChoiceField from "./components/AreaChoiceField.js";
-import { Select, MenuItem, Button } from "@mui/material";
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { updateDetail } from '../../store/bedroomSlice'
+import AreaChoiceField from './components/AreaChoiceField.js'
+import { Select, MenuItem, Button } from '@mui/material'
 
 export default function Bedroom(props) {
-  const bedroom = useSelector((state) => state.bedroom.details);
-  const dispatch = useDispatch();
+  const bedroom = useSelector((state) => state.bedroom.details)
+  const dispatch = useDispatch()
   const [index, setIndex] = useState(0)
 
   const incrementIndex = () => {
-    setIndex(index + 1);
+    setIndex(index + 1)
   }
 
   const decrementIndex = () => {
-    setIndex(index - 1);
+    setIndex(index - 1)
   }
 
   const handleChange = (value, key, attribute) => {
-    dispatch(updateDetail({ value: value, key: key, attribute: attribute }));
-  };
+    dispatch(updateDetail({ value: value, key: key, attribute: attribute }))
+  }
 
   return (
     <div>
       <h2>Let's talk about the rooms...</h2>
-      <h3>{ index + 1}/{bedroom.length}</h3>
+      <h3>
+        {index + 1}/{bedroom.length}
+      </h3>
       <div>
-        <Button onClick={() => {
-          index > 0 ? decrementIndex() : console.log('disable back')
-          }}>Back</Button>
-        <Button onClick={() => {
-          index < bedroom.length - 1 ? incrementIndex() : console.log('continue')
-          }}>Continue</Button>
+        <Button
+          onClick={() => {
+            index > 0 ? decrementIndex() : console.log('disable back')
+          }}
+        >
+          Back
+        </Button>
+        <Button
+          onClick={() => {
+            index < bedroom.length - 1
+              ? incrementIndex()
+              : console.log('continue')
+          }}
+        >
+          Continue
+        </Button>
       </div>
     </div>
-    )
+  )
 }
 
 /*

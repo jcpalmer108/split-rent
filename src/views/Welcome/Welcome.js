@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button } from "@mui/material";
+import React, { useState } from 'react'
+import { Button } from '@mui/material'
 
 export function Welcome() {
   return (
@@ -12,5 +12,5 @@ export function Welcome() {
       </p>
       <Button>Hi</Button>
     </div>
-  );
+  )
 }

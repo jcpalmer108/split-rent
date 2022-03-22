@@ -1,6 +1,6 @@
-import React from 'react';
-import { LinearProgress } from '@mui/material';
-import "./ProgressBar.scss"
+import React from 'react'
+import { LinearProgress } from '@mui/material'
+import './ProgressBar.scss'
 
 /*
 
@@ -11,9 +11,9 @@ TODO:
 */
 
 export default function ProgressBar() {
-  return(
-    <div className="progress-bar">
-      <LinearProgress variant="determinate" value={1} />
+  return (
+    <div className='progress-bar'>
+      <LinearProgress variant='determinate' value={1} />
     </div>
   )
 }

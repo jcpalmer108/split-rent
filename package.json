@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettify": "npx prettier --write . --jsx-single-quote --no-semi --single-quote --tab-width 2"
   },
   "eslintConfig": {
     "extends": "react-app"
