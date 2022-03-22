@@ -11,7 +11,13 @@ export const slice = createSlice({
       (state = { ...state, count: action.payload }),
     generateDefaultBedroomDetails: (state) => {
       const keys = ['A', 'B', 'C', 'D', 'E']
-      const labels = ['Master Suite', 'Big Bedroom', 'Cozy Bedroom', 'Bright Bedroom', 'Dark Bedroom']
+      const labels = [
+        'Master Suite',
+        'Big Bedroom',
+        'Cozy Bedroom',
+        'Bright Bedroom',
+        'Dark Bedroom',
+      ]
       for (var i = 0; i < state.count; i++) {
         state.details.push({
           key: keys[i],

@@ -27,7 +27,7 @@ export default function Bedroom(props) {
   }
 
   const evaluateIsBackDisabled = () => {
-    if(index <= 0) {
+    if (index <= 0) {
       setIsBackDisabled(true)
     } else {
       setIsBackDisabled(false)
@@ -42,26 +42,38 @@ export default function Bedroom(props) {
       </h3>
       <div>
         The{' '}
-        <TextField variant="standard" value={bedroom[index].label} onChange={(event) => handleChange(event.target.value, bedroom[index].key, "label")} />
-        {' '}is{' '}
-        <AreaChoiceField item={bedroom[index]} areaChoice={props.areaChoice} handleChange={handleChange} index={index} />
-        {' '}It also{' '}
+        <TextField
+          variant='standard'
+          value={bedroom[index].label}
+          onChange={(event) =>
+            handleChange(event.target.value, bedroom[index].key, 'label')
+          }
+        />{' '}
+        is{' '}
+        <AreaChoiceField
+          item={bedroom[index]}
+          areaChoice={props.areaChoice}
+          handleChange={handleChange}
+          index={index}
+        />{' '}
+        It also{' '}
         <Select
           value={bedroom[index].attachedBath}
-          variant="standard"
-          onChange={(event) => handleChange(event.target.value, bedroom[index].key, "attachedBath")}
+          variant='standard'
+          onChange={(event) =>
+            handleChange(event.target.value, bedroom[index].key, 'attachedBath')
+          }
         >
           <MenuItem value={true}>does</MenuItem>
           <MenuItem value={false}>does not</MenuItem>
-        </Select>
-        {' '}have an attached bathroom.
-
+        </Select>{' '}
+        have an attached bathroom.
       </div>
       <div>
         <Button
           disabled={isBackDisabled}
           onClick={() => {
-            if(index > 0) decrementIndex()
+            if (index > 0) decrementIndex()
           }}
         >
           Back
@@ -69,7 +81,7 @@ export default function Bedroom(props) {
 
         <Button
           onClick={() => {
-            if(index < bedroom.length - 1) incrementIndex();
+            if (index < bedroom.length - 1) incrementIndex()
           }}
         >
           Continue
